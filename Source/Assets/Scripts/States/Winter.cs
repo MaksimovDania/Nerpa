@@ -1,8 +1,8 @@
 using UnityEngine;
 
 namespace Core {
-	[CreateAssetMenu(fileName = "Spring", menuName = "Core/States/Spring", order = 2)]
-	public class Spring : State {
+	[CreateAssetMenu(fileName = "Winter", menuName = "Core/States/Winter", order = 5)]
+	public class Winter : State {
 
 
 		public override void Enter() {
