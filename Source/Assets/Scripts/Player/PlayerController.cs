@@ -1,0 +1,36 @@
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+namespace Player
+{
+    public class PlayerController : MonoBehaviour
+    {
+        
+        private Mover _mover;
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            _mover = GetComponent<Mover>();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            ProcessInput();
+        }
+        private void ProcessInput()
+        {
+            if (Input.anyKey)
+            {
+                _mover.MoveTowardsDirection();
+            }
+            else
+            {
+                _mover.StopMove();
+            }
+        }
+
+    }
+}
