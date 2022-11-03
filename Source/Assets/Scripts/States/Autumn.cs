@@ -1,6 +1,8 @@
 using UnityEngine;
 
-namespace Core {
+namespace Core 
+{
+	
 	[CreateAssetMenu(fileName = "Autumn", menuName = "Core/States/Autumn", order = 4)]
 	public class Autumn : State {
 

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Core {
-
+namespace Core 
+{
     public class BaseJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler {
         public float Horizontal { get { return (snapX) ? SnapFloat(input.x, AxisOptions.Horizontal) : input.x; } }
         public float Vertical { get { return (snapY) ? SnapFloat(input.y, AxisOptions.Vertical) : input.y; } }
@@ -39,12 +39,13 @@ namespace Core {
 
         private Vector2 input = Vector2.zero;
 
-        protected virtual void Start() {
+        protected virtual void Start() 
+        {
             HandleRange = handleRange;
             DeadZone = deadZone;
             baseRect = GetComponent<RectTransform>();
             canvas = GetComponentInParent<Canvas>();
-            if (canvas == null)
+            if (!canvas)
                 Debug.LogError("The Joystick is not placed inside a canvas");
 
             Vector2 center = new Vector2(0.5f, 0.5f);
@@ -55,11 +56,13 @@ namespace Core {
             handle.anchoredPosition = Vector2.zero;
         }
 
-        public virtual void OnPointerDown(PointerEventData eventData) {
+        public virtual void OnPointerDown(PointerEventData eventData) 
+        {
             OnDrag(eventData);
         }
 
-        public void OnDrag(PointerEventData eventData) {
+        public void OnDrag(PointerEventData eventData) 
+        {
             cam = null;
             if (canvas.renderMode == RenderMode.ScreenSpaceCamera)
                 cam = canvas.worldCamera;
@@ -72,7 +75,8 @@ namespace Core {
             handle.anchoredPosition = input * radius * handleRange;
         }
 
-        protected virtual void HandleInput(float magnitude, Vector2 normalised, Vector2 radius, Camera cam) {
+        protected virtual void HandleInput(float magnitude, Vector2 normalised, Vector2 radius, Camera cam) 
+        {
             if (magnitude > deadZone) {
                 if (magnitude > 1)
                     input = normalised;
@@ -80,14 +84,16 @@ namespace Core {
                 input = Vector2.zero;
         }
 
-        private void FormatInput() {
+        private void FormatInput() 
+        {
             if (axisOptions == AxisOptions.Horizontal)
                 input = new Vector2(input.x, 0f);
             else if (axisOptions == AxisOptions.Vertical)
                 input = new Vector2(0f, input.y);
         }
 
-        private float SnapFloat(float value, AxisOptions snapAxis) {
+        private float SnapFloat(float value, AxisOptions snapAxis) 
+        {
             if (value == 0)
                 return value;
 
@@ -114,12 +120,14 @@ namespace Core {
             return 0;
         }
 
-        public virtual void OnPointerUp(PointerEventData eventData) {
+        public virtual void OnPointerUp(PointerEventData eventData) 
+        {
             input = Vector2.zero;
             handle.anchoredPosition = Vector2.zero;
         }
 
-        protected Vector2 ScreenPointToAnchoredPosition(Vector2 screenPosition) {
+        protected Vector2 ScreenPointToAnchoredPosition(Vector2 screenPosition) 
+        {
             Vector2 localPoint = Vector2.zero;
             if (RectTransformUtility.ScreenPointToLocalPointInRectangle(baseRect, screenPosition, cam, out localPoint)) {
                 Vector2 pivotOffset = baseRect.pivot * baseRect.sizeDelta;
