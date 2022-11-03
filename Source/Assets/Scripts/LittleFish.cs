@@ -4,32 +4,33 @@ using UnityEngine;
 using static System.Random;
 
 
-namespace Creatures {
+namespace Creatures 
+{
 
-    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(Rigidbody2D))]
     public class LittleFish : MonoBehaviour, IFish 
     {
         
         [SerializeField] private float speed;
 
-        private Rigidbody _rigidbody;
+        private Rigidbody2D _rigidbody;
         private Mover _mover;
-        private float timer;
+        private float _timer;
 
         void Start() 
         {
-            timer = 0f;
-            _rigidbody = GetComponent<Rigidbody>();
+            _timer = 0f;
+            _rigidbody = GetComponent<Rigidbody2D>();
             _mover = GetComponent<Mover>();
             Move();
         }
 
 		private void LateUpdate() {
-			if (timer > 8f) {
+			if (_timer > 8f) {
                 Move();
-                timer = 0f;
+                _timer = 0f;
             }
-            timer += Time.deltaTime;
+            _timer += Time.deltaTime;
 		}
 
         public void Move() {
@@ -39,7 +40,7 @@ namespace Creatures {
         private (float, float) GetRandomDirection() {
             return (Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         }
-
+        
         void OnCollisionEnter(Collision collision) {
         }
 

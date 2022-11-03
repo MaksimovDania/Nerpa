@@ -25,12 +25,12 @@ public class Mover : MonoBehaviour
     
     private GameObject _joystick;
     private Joystick _joystickComponent;
-    private Rigidbody _rigidbody;
+    private Rigidbody2D _rigidbody;
     
     
     private void Start()
     {
-        _rigidbody = GetComponent<Rigidbody>();
+        _rigidbody = GetComponent<Rigidbody2D>();
         if (!TryGetComponent(out LittleFish fish))
         {
             _joystick = Instantiate(joystick, canvas);
@@ -52,7 +52,7 @@ public class Mover : MonoBehaviour
             {
                 _rigidbody.velocity = _rigidbody.velocity.normalized * maxSpeed;
             }
-            var movement = new Vector3(_joystickComponent.Direction.x, _joystickComponent.Direction.y, 0f);
+            var movement = new Vector2(_joystickComponent.Direction.x, _joystickComponent.Direction.y);
             _rigidbody.AddForce(movement * boost);
         }
     }
@@ -60,7 +60,7 @@ public class Mover : MonoBehaviour
     public void MoveFish() 
     {
         (float horizontalForce, float verticalForce) = GetRandomDirection();
-        var movement = new Vector3(horizontalForce, verticalForce, 0.0f);
+        var movement = new Vector2(horizontalForce, verticalForce);
         _rigidbody.AddForce(movement * fishSpeed);
     }
 
