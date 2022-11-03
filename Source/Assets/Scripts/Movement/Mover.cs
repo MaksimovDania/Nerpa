@@ -1,8 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Core;
+using Creatures;
 using UnityEngine;
+using static System.Random;
 
 public class Mover : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class Mover : MonoBehaviour
 
     [Range(1f, 5f)]
     [SerializeField] private float maxSpeed;
+    
+    [Range(1f, 5f)]
+    [SerializeField] private float fishSpeed;
     
     [SerializeField] private Transform canvas;
     
@@ -21,15 +25,17 @@ public class Mover : MonoBehaviour
     
     private GameObject _joystick;
     private Joystick _joystickComponent;
-    
     private Rigidbody _rigidbody;
     
     
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _joystick = Instantiate(joystick, canvas);
-        _joystickComponent = _joystick.GetComponent<Joystick>();
+        if (!TryGetComponent(out LittleFish fish))
+        {
+            _joystick = Instantiate(joystick, canvas);
+            _joystickComponent = _joystick.GetComponent<Joystick>();
+        }
     }
 
     public void StopMove()
@@ -49,6 +55,18 @@ public class Mover : MonoBehaviour
             var movement = new Vector3(_joystickComponent.Direction.x, _joystickComponent.Direction.y, 0f);
             _rigidbody.AddForce(movement * boost);
         }
+    }
+    
+    public void MoveFish() 
+    {
+        (float horizontalForce, float verticalForce) = GetRandomDirection();
+        var movement = new Vector3(horizontalForce, verticalForce, 0.0f);
+        _rigidbody.AddForce(movement * fishSpeed);
+    }
+
+    private (float, float) GetRandomDirection() 
+    {
+        return (Random.Range(-1f, 1f), Random.Range(-1f, 1f));
     }
     
     private float Abs(float value)

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8605759920692825765}
   - component: {fileID: 8605759920692825766}
   - component: {fileID: 8605759920692825767}
+  - component: {fileID: 2951337678165739583}
   - component: {fileID: 8605759920692825769}
   - component: {fileID: 8605759920692825768}
   - component: {fileID: 8605759920692825764}
@@ -86,6 +87,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2951337678165739583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605759920692825770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03eee1a6601b54b4c98ec0cbe5828f5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boost: 0
+  maxSpeed: 0
+  fishSpeed: 2
+  canvas: {fileID: 0}
+  joystick: {fileID: 0}
+  stopSpeed: 0
 --- !u!114 &8605759920692825769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,5 +145,5 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 56
   m_CollisionDetection: 0

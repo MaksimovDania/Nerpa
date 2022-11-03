@@ -7,7 +7,8 @@ using static System.Random;
 namespace Creatures {
 
     [RequireComponent(typeof(Rigidbody))]
-    public class LittleFish : MonoBehaviour, IFish {
+    public class LittleFish : MonoBehaviour, IFish 
+    {
         
         [SerializeField] private float speed;
 
@@ -15,9 +16,11 @@ namespace Creatures {
         private Mover _mover;
         private float timer;
 
-        void Start() {
+        void Start() 
+        {
             timer = 0f;
             _rigidbody = GetComponent<Rigidbody>();
+            _mover = GetComponent<Mover>();
             Move();
         }
 
@@ -30,9 +33,7 @@ namespace Creatures {
 		}
 
         public void Move() {
-            (float horizontalForce, float verticalForce) = GetRandomDirection();
-            var movement = new Vector3(horizontalForce, verticalForce, 0.0f);
-            _rigidbody.AddForce(movement * speed);
+            _mover.MoveFish();
         }
 
         private (float, float) GetRandomDirection() {
