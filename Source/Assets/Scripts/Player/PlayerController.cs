@@ -20,9 +20,10 @@ namespace Player
         {
             ProcessInput();
         }
+        
         private void ProcessInput()
         {
-            if (Input.anyKey)
+            if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(0))
             {
                 _mover.MoveTowardsDirection();
             }
