@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -33,5 +34,13 @@ namespace Player
             }
         }
 
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            print("Collided");
+            if (collision.collider.CompareTag("Fish"))
+            {
+                Destroy(collision.collider.gameObject);
+            }
+        }
     }
 }

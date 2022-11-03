@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerTop
   - Canvas
+  - Fish
   layers:
   - Default
   - TransparentFX
