@@ -1,8 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Core;
+using Creatures;
 using UnityEngine;
+using static System.Random;
 
 public class Mover : MonoBehaviour
 {
@@ -11,44 +12,66 @@ public class Mover : MonoBehaviour
 
     [Range(1f, 5f)]
     [SerializeField] private float maxSpeed;
-
-    [SerializeField] private Joystick _joystick;
-
+    
+    [Range(1f, 5f)]
+    [SerializeField] private float fishSpeed;
+    
+    [SerializeField] private Transform canvas;
+    
+    [SerializeField] private GameObject joystick;
+    
+    [Range(1f, 5f)]
+    [SerializeField] private float stopSpeed;
+    
+    private GameObject _joystick;
+    private Joystick _joystickComponent;
     private Rigidbody _rigidbody;
+    
     
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        if (!TryGetComponent(out LittleFish fish))
+        {
+            _joystick = Instantiate(joystick, canvas);
+            _joystickComponent = _joystick.GetComponent<Joystick>();
+        }
     }
 
-    private float Abs(float value)
-    {
-        return value >= 0 ? value : -value;
-    }
-    
     public void StopMove()
     {
-        
         if (Abs(_rigidbody.velocity.x) > 0.001 || Abs(_rigidbody.velocity.y) > 0.001)
-            _rigidbody.AddForce(-_rigidbody.velocity * 2);
+            _rigidbody.AddForce(-_rigidbody.velocity * stopSpeed);
     }
 
     public void MoveTowardsDirection()
     {
-        var moveHorizontal = Input.GetAxis("Horizontal");
-
-        var moveVertical = Input.GetAxis("Vertical");
-        
         if (_joystick)
         {
-            moveHorizontal = _joystick.Horizontal;
-        
-            moveVertical = _joystick.Vertical;
+            if (_rigidbody.velocity.magnitude >= maxSpeed)
+            {
+                _rigidbody.velocity = _rigidbody.velocity.normalized * maxSpeed;
+            }
+            var movement = new Vector3(_joystickComponent.Direction.x, _joystickComponent.Direction.y, 0f);
+            _rigidbody.AddForce(movement * boost);
         }
-
-        Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0f);
-         // if (Abs(_rigidbody.velocity.x) < maxSpeed && Abs(_rigidbody.velocity.y) < maxSpeed)
-            _rigidbody.AddForce(movement * boost, ForceMode.Acceleration);
-            
     }
+    
+    public void MoveFish() 
+    {
+        (float horizontalForce, float verticalForce) = GetRandomDirection();
+        var movement = new Vector3(horizontalForce, verticalForce, 0.0f);
+        _rigidbody.AddForce(movement * fishSpeed);
+    }
+
+    private (float, float) GetRandomDirection() 
+    {
+        return (Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+    }
+    
+    private float Abs(float value)
+    {
+        return value > 0 ? value : -value;
+    }
+
 }

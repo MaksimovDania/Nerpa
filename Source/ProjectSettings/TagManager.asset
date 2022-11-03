@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayerTop
+  - Canvas
   layers:
   - Default
   - TransparentFX
