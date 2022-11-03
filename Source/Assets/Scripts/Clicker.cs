@@ -7,16 +7,18 @@ namespace Core {
         public static Clicker instance;
         public bool clickable;
 
+        private AudioSource _audio;
         void Awake() {
             if (instance == null)
                 instance = this;
             else
                 Destroy(gameObject);
+            _audio = GetComponent<AudioSource>();
         }
 
         void Update() {
             if (Input.anyKeyDown && clickable)
-                GetComponent<AudioSource>().Play();
+                _audio.Play();
         }
     }
 }
