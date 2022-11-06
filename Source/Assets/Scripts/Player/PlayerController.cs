@@ -1,6 +1,5 @@
 using Creatures;
-using System;
-using Unity.VisualScripting;
+using Core;
 using UnityEngine;
 
 namespace Player

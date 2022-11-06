@@ -1,26 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static System.Random;
+using Core;
 
 
 namespace Creatures 
 {
-
     [RequireComponent(typeof(Rigidbody2D))]
-    public class LittleFish : MonoBehaviour, ISwimmable {
-        
+    public class LittleFish : MonoBehaviour, ISwimmable 
+    {
         [SerializeField] private float speed;
 
         private Rigidbody2D _rigidbody;
-        private Mover _mover;
         private float _timer;
 
-        void Start() 
+        private void Start() 
         {
             _timer = 0f;
             _rigidbody = GetComponent<Rigidbody2D>();
-            _mover = GetComponent<Mover>();
             Move();
         }
 
@@ -33,7 +28,7 @@ namespace Creatures
 		}
 
         public void Move() {
-            _mover.MoveFish();
+            _rigidbody.AddForce(Mover.GetRandomDirection() * speed);
         }
 
         private (float, float) GetRandomDirection() {
