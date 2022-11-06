@@ -8,8 +8,7 @@ namespace Creatures
 {
 
     [RequireComponent(typeof(Rigidbody2D))]
-    public class LittleFish : MonoBehaviour, IFish 
-    {
+    public class LittleFish : MonoBehaviour, ISwimmable {
         
         [SerializeField] private float speed;
 
@@ -41,11 +40,6 @@ namespace Creatures
             return (Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         }
         
-        void OnCollisionEnter(Collision collision) {
-        }
-
-        void OnCollisionExit(Collision collision) {
-        }
 	}
 }
 

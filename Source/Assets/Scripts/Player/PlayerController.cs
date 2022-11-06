@@ -1,46 +1,37 @@
+using Creatures;
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace Player
 {
-    public class PlayerController : MonoBehaviour
-    {
-        
+    public class PlayerController : MonoBehaviour, ISwimmable {
         private Mover _mover;
 
-        // Start is called before the first frame update
         void Start()
         {
             _mover = GetComponent<Mover>();
         }
 
-        // Update is called once per frame
         void Update()
         {
-            ProcessInput();
+            Move();
         }
         
-        private void ProcessInput()
+        public void Move()
         {
-            if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(0))
-            {
+            if (Input.GetMouseButton(0))
                 _mover.MoveTowardsDirection();
-            }
             else
-            {
                 _mover.StopMove();
-            }
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            print("Collided");
             if (collision.collider.CompareTag("Fish"))
             {
                 Destroy(collision.collider.gameObject);
             }
         }
-    }
+	}
 }
