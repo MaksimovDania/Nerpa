@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 5645298535905180813}
   - component: {fileID: 2859974843003719580}
   m_Layer: 0
-  m_Name: Fish
-  m_TagString: Fish
+  m_Name: Omul
+  m_TagString: Omul
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,7 +115,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

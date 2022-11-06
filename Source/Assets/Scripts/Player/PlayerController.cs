@@ -27,8 +27,19 @@ namespace Player
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.collider.CompareTag("Fish"))
+            if (collision.collider.CompareTag("Omul"))
             {
+                FishSpawner.instance.RemoveFish(collision.collider.gameObject, FishSpawner.instance.omuls);
+                Destroy(collision.collider.gameObject);
+            } 
+            else if (collision.collider.CompareTag("OilFish")) 
+            {
+                FishSpawner.instance.RemoveFish(collision.collider.gameObject, FishSpawner.instance.oilfishs);
+                Destroy(collision.collider.gameObject);
+            } 
+            else if (collision.collider.CompareTag("BullFish")) 
+            {
+                FishSpawner.instance.RemoveFish(collision.collider.gameObject, FishSpawner.instance.bullfishs);
                 Destroy(collision.collider.gameObject);
             }
         }

@@ -30,10 +30,6 @@ namespace Creatures
         public void Move() {
             _rigidbody.AddForce(Mover.GetRandomDirection() * speed);
         }
-
-        private (float, float) GetRandomDirection() {
-            return (Random.Range(-1f, 1f), Random.Range(-1f, 1f));
-        }
         
 	}
 }
