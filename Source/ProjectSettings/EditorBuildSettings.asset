@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/MainScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/JoystickScene.unity
     guid: 5cbad2d843ea7b749a2edc1a20fd3795
+  - enabled: 1
+    path: Assets/Scenes/FirstLocation.unity
+    guid: 7132c0d0b8a832b48ba38510a08ee001
   m_configObjects: {}

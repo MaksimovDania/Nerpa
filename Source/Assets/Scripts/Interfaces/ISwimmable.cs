@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Creatures {
-    interface IFish {
-        void Move();
+    interface ISwimmable {
+        public void Move();
     }
 }
