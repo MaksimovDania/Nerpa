@@ -785,6 +785,11 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5974431325049748090, guid: 4d1c50a32fcb0c540a6f53731b7ea6b4,
+        type: 3}
+      propertyPath: distanceToFish
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7901814828184338704, guid: 4d1c50a32fcb0c540a6f53731b7ea6b4,
         type: 3}
       propertyPath: canvas
@@ -804,6 +809,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Nerp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438514620518942104, guid: 4d1c50a32fcb0c540a6f53731b7ea6b4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8438514620518942111, guid: 4d1c50a32fcb0c540a6f53731b7ea6b4,
         type: 3}
@@ -933,6 +943,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 305485148}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &927610227
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 927610229}
+  - component: {fileID: 927610228}
+  m_Layer: 0
+  m_Name: Timer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!114 &927610228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927610227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d922afb3bd882f24883076ab8352233e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &927610229
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927610227}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1011779717
 PrefabInstance:
@@ -1473,13 +1527,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1971a25be5cdd3a45aa500418457e3df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  omul: {fileID: 8605759920692825770, guid: 41a25cdd7c129ec4c94f7cfc8e269561, type: 3}
-  oilfish: {fileID: 0}
-  bullfish: {fileID: 0}
-  omulPopulation: 30
-  oilfishPopulation: 0
-  bullfishPopulation: 0
-  spawnPeriod: 4
+  omul: {fileID: 8605759920692825770, guid: f49a757d643a73b44a155f405a195a86, type: 3}
+  oilfish: {fileID: 8605759920692825770, guid: 41a25cdd7c129ec4c94f7cfc8e269561, type: 3}
+  bullfish: {fileID: 8605759920692825770, guid: 5929f39857c5b9541bec9ad202017a3f,
+    type: 3}
+  omulPopulation: 15
+  oilfishPopulation: 50
+  bullfishPopulation: 20
+  spawnPeriod: 5
   distance: 5
   areas:
   - {fileID: 2109948207}
